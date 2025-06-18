@@ -9,7 +9,7 @@
 <form action="" method="GET">
 <input type="text" name="pesquisar" placeholder="Digite para buscar" />
 <button>Pesquisar</button>
-<a type="button" href="" class="btn btn-success float-end">
+<a type="button" href="{{ route('contatos.create.get') }}" class="btn btn-success float-end">
     Incluir
 </a>
 </form>
@@ -39,10 +39,10 @@
                     @method('DELETE')
                 <button type="submit" class="btn btn-danger btn-sm">
                     Excluir
-        </button>
-    </form>
-    </td>
-    </tr>
+                </button>
+                </form>
+            </td>
+        </tr>
      @endforeach
     </tbody>
 </table>

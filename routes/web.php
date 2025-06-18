@@ -28,4 +28,10 @@ Route::get('/contatos', [ContatosController::class, 'index'])->name('contatos.in
 // Rota de delete
 Route::delete('/contatos/{contatoId}', [ContatosController::class, 'delete'])->name('contatos.delete');
 
+// Rota de create
+Route::get('/contatos/create', [ContatosController::class, 'create'])->name('contatos.create.get');
+
+// Rota de create - método post
+Route::post('/contatos/create', [ContatosController::class, 'create'])->name('contatos.create.post');
+
 require __DIR__.'/auth.php';
