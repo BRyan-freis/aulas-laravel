@@ -250,13 +250,26 @@
     </main>
     </div>
     </div>
-    <script src="{{asset('js/bootstrap.bundle.min.js') }}"
+
+    <!-- Biblioteca jquery para alert e também para máscara -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Biblioteca Jquery para testar máscara de telefone -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Acesso ao arquivo do projeto no public -->
+    <script src="{{ asset('js/projeto.js') }}"></script>
+
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" class="astro-vvvwv3sm">
-        </script>
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js"
         integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"
-        class="astro-vvvwv3sm"></script>
-    <script src="{{asset('js/dashboard.js')}}" class="astro-vvvwv3sm"></script>
+        class="astro-vvvwv3sm">
+    </script>
+
+    <script src="{{ asset('js/dashboard.js') }}" class="astro-vvvwv3sm"></script>
 </body>
 
 </html>
