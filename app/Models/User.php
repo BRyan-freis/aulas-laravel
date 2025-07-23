@@ -18,6 +18,7 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
+        'permissao_do_usuario',
         'name',
         'email',
         'password',
@@ -44,5 +45,17 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // Filtro de pesquisa
+    public function getFiltrosPaginate(string $search = ''){
+        $dados = $this->where(function ($query) use ($search){
+            if($search){
+                $query->where('name', $search);
+                $query->orWhere('name', 'LIKE', "%{$search}%");
+            }
+        })->get();
+
+        return $dados;
     }
 }
