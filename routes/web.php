@@ -18,7 +18,6 @@ Route::get('/contatos/create', [ContatosController::class, 'create'])->name('con
 // Rota de Create - Post
 Route::post('/contatos/create', [ContatosController::class, 'create'])->name('contatos.create.post');
  
- 
 // Rota de Update - método get
 Route::get('/contatos/update/{contatoID}', [ContatosController::class, 'update'])->name('contatos.update.get');
  
@@ -46,14 +45,33 @@ Route::get('/usuarios/update/{userID}', [UsuariosController::class, 'update'])->
 // Rota de Update Usuários - método put
 Route::put('/usuarios/update/{userID}', [UsuariosController::class, 'update'])->name('usuarios.update.put');
 
- Route::get('/', function () {
+// Breeze/Laravel routes
+
+// Tela de boas vindas do breeze
+Route::get('/', function () {
     return view('welcome');
 });
  
+// Direcionamento para a página Sobre Nós
 Route::get('/sobrenos', function(){
     return 'Essa é a página sobre nós';
-});
- 
-Route::get('/index',function(){
+})->middleware(['auth', 'verified'])->name('sobrenos');
+
+// Autenticação de usuários - para liberar acesso ao dashboard apenas quando estiver logado
+Route::get('/dashboard', function () {
     return view('index');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+// Autenticação de usuários - para liberar acesso a Página Inicial
+Route::get('/index', function () {
+    return view('index');
+})->middleware(['auth', 'verified'])->name('index');
+
+// Profile routes - Autenticação
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+require __DIR__.'/auth.php';
