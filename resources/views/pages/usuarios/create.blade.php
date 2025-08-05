@@ -8,6 +8,14 @@
 <form class="form" method="POST" acion="{{ route('usuarios.create.post') }}">
 @csrf  
 
+<div class="mb-3">
+    <label for="form-label">Permissão</label>
+    <select name="permissao_do_usuario" class="form-select" arial-label="Clique aqui e selecione">
+        <option value="administrador">Administrador</option>
+        <option value="usuario">Usuário</option>    
+    </select>
+    
+</div>
     <div class="mb-3">
         <label class="form-label">Nome</label>
         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name">

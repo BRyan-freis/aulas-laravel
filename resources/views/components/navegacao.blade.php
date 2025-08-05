@@ -2,7 +2,7 @@
                 <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
                     aria-labelledby="sidebarMenuLabel">
                     <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="sidebarMenuLabel">CRUD</h5> <button type="button"
+                        <h5 class="offcanvas-title" id="sidebarMenuLabel">CRUD</h5> <button  href="{{ route('index') }}" type="button"
                             class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
                             aria-label="Close"></button>
                     </div>
@@ -28,12 +28,14 @@
                             <li class="nav-item"> 
                                 <form  method="POST" action=" {{ route('logout') }}">
                                     @csrf
-                                        <a onclick="event.preventDefault();
-                                        this.closest('form').submit();"
-                                        class="nav-link d-flex align-items-center gap-2" href="#"> <svg
+
+                                    <a onclick="event.preventDefault();
+
+                                    this.closest('form').submit();"
+                                    class="nav-link d-flex align-items-center gap-2" href="#"> <svg
                                         class="bi" aria-hidden="true">
                                         <use xlink:href="#door-closed"></use>
-                                        </svg>
+                                      </svg>
                                         Sair
                                     </a> 
                                 </form>

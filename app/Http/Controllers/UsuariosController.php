@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\FormRequestUsuarios;
 
-use Iluminate\Support\Facades\Hash;
+// Hash de Autentificação - necessário para criptografia de senhas
+use Illuminate\Support\Facades\Hash;
 
 class UsuariosController extends Controller
 {
@@ -34,7 +35,14 @@ class UsuariosController extends Controller
          //Retornando a view de criação de contatos
         if ($request->method() == "POST") {
             $data = $request->all();
-            User::create($data);
+            User::create(
+                [
+                    "permissao_do_usuario" => $data ['permissao_do_usuario'],
+                    "name" => $data['name'],
+                    "email" => $data['email'],
+                    "password" => Hash::make($data['password']),
+                ]
+            );
             return redirect('/usuarios');
         }
         return view('pages.usuarios.create');
